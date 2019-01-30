@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
 // 'DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic,
@@ -46,6 +47,46 @@ module.exports = options => ({
         test: /\.css$/,
         include: /node_modules/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        include: [path.resolve('app/styles')],
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: process.env.NODE_ENV === 'development',
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: process.env.NODE_ENV === 'development',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.scss$/,
+        exclude: [path.resolve('app/styles'), path.resolve('node_modules')],
+        use: [
+          process.env.NODE_ENV === 'development'
+            ? 'style-loader'
+            : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+              importLoader: 2,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
@@ -117,6 +158,11 @@ module.exports = options => ({
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; Terser will automatically
     // drop any unreachable code.
+    new MiniCssExtractPlugin({
+      filename: '[name][contenthash].css',
+      chunkFilename: '[name][contenthash].css',
+      allChunks: true,
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
