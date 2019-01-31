@@ -1,6 +1,11 @@
 .homePage{
   background-color: green;
-  margin: 0 0 0 120px;
+  margin: 0 0 0 0;
+
+  .button{
+    margin: 0 0 0 2em;
+  }
+
   .input{
     background-color: white;
   }
