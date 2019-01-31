@@ -57,11 +57,14 @@ export class HelpPage extends React.Component {
         <p>
           Press this
           <button 
+          className={ style.button }
           type="button" 
           onClick={this.onButtonClick}
           >
           Click
           </button>
+        </p>
+        <p>
           To home <Link to="/">page</Link>
         </p>
       </div>

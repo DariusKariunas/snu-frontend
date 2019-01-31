@@ -56,6 +56,7 @@ export default class HomePage extends React.PureComponent {
       <div className={style.homePage}>
         <h1>Home page {this.state.text}</h1>
         <Link to="/help">Go to help</Link>
+        <Link to="/nextpage">Go to next page</Link>
         <p>{this.state.tic}</p>
         <button className={style.button} type="button" onClick={this.onButtonClick}>
           Click
