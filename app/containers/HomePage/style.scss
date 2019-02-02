@@ -1,42 +1,64 @@
 .homePage{
-  background-color: green;
+  
   margin: 0 0 0 0;
   display: flex;
+
   
   .map { 
+    position: fixed;
     height: 100vh;
     width: 100vw;
+    cursor: grab;
   }
 
-  .button {
-    margin-top: 2em;
+  .buttonLogin {
+    position: absolute;    
+    z-index: 99999;
+    right: 5em;
+    top: 2em;
+    cursor: pointer;
+   
     height: 2em;
+    border-radius: 10px;
     display: flex;    
     color: white;
     border: 1px solid #FB8F3D; 
-    background: -webkit-linear-gradient(top, #FDA251, #FB8F3D);
-    background: -moz-linear-gradient(top, #FDA251, #FB8F3D);
-    background: -ms-linear-gradient(top, #FDA251, #FB8F3D);
+    background: black;
+    opacity: 0.6;
+    justify-content: center;
   }
 
-  .button:hover {
+  .buttonLogin:hover {
+    -webkit-transition: width 1s, height 1s; /* Safari */
+    transition: width 1s, height 1s;    
+    width: 4em;
+    height: 3em;
+
     border: 1px solid #EB5200;
-    background: -webkit-linear-gradient(top, #FD924C, #F9760B); 
-    background: -moz-linear-gradient(top, #FD924C, #F9760B); 
-    background: -ms-linear-gradient(top, #FD924C, #F9760B); 
+    //background: -webkit-linear-gradient(top, #FD924C, #F9760B); 
+    background: black;
+    opacity: 0.6;
     box-shadow: 0 1px #EFEFEF;
   }
 
-  .button:active {
+  .buttonLogin:active {
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.3);
   }
     
 
   .ticker {
-    background-color: red;
-    font-size: 20px;
+    cursor: no-drop;
+    position: absolute;    
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    z-index: 99999;
+    left: 2em;
+    bottom: 2em;
+    width: 50px;
+    height: 30px;
+    background-color: rgb(134, 194, 132);
+    font-size: 15px;
     border-style: solid;
-    border-width: 2px 2px 5px 5px;
+    border-width: 2px 2px 2px 2px;
     text-align: center;
     height: 2em;
     
@@ -56,6 +78,39 @@
 li{
   color: black;
   font-size: 2em;
+}
+
+.button {
+  position: absolute;    
+  z-index: 99999;
+  right: 5em;
+  top: 2em;
+  cursor: pointer;
+  
+  
+  height: 2em;
+  border-radius: 10px;
+  display: flex;    
+  color: white;
+  border: 1px solid #FB8F3D; 
+  background: -webkit-linear-gradient(top, #FDA251, #FB8F3D);
+  justify-content: center;
+  
+}
+
+.button:hover {
+  width: 4em;
+  height: 3em;
+
+  border: 1px solid #EB5200;
+  
+  background: black;
+  background-color: Transparent;
+  box-shadow: 0 1px #EFEFEF;
+}
+
+.button:active {
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.3);
 }
 
 

@@ -60,6 +60,8 @@ export default class HomePage extends React.PureComponent {
       <div className={style.homePage}>
 
         <div className={style.map}>
+          <button className={style.buttonLogin}> Login </button>
+          <p className={style.ticker}>{this.state.tic}</p>
           <Map/>
         </div>
 

@@ -11,10 +11,11 @@ import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 import style from './style.scss';
 
-function MapMarker({ text }) {
+function MapMarker({ text, pic }) {
   return (
     <div className={style.marker} >
     {text}
+    <img className={style.markerPic} src={pic} alt="ad"/>
     </div>
   );
 }

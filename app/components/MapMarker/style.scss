@@ -2,6 +2,36 @@
     display: block;
     height: 3em;
     width: 3em;
-    background-color: red;
+    background: black ;
+    opacity: 0.5; 
+    border-radius: 25px;
+    transition: opacity 3s ease-in-out;
+   -moz-transition: opacity 3s ease-in-out;
+   -webkit-transition: opacity 3s ease-in-out;
+    img {
+        display: none;
+        opacity: 0;
+        height: 0px;
+        width: 0px;
+    }   
     
+}
+.marker:hover{
+    -webkit-transition: width 1s, height 1s; /* Safari */
+    transition: width 4s, height 4s ;    
+    font-size: 20px;
+    color: white;
+    padding: 1em ;    
+    opacity: 1 ;
+    background-color: black;
+    height: 10em;
+    width: 10em;
+    img {
+            
+        display: flex;
+        opacity: 1;
+       
+        height: 5em;
+        width: 5em;
+    }   
 }
