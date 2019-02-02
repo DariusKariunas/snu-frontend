@@ -54,19 +54,26 @@ export class HelpPage extends React.Component {
           <meta name="description" content="Description of HelpPage" />
         </Helmet>
         <h1>Help page</h1>
-        <p>
-          Press this
-          <button 
-          className={ style.button }
-          type="button" 
-          onClick={this.onButtonClick}
-          >
-          Click
-          </button>
-        </p>
-        <p>
-          To home <Link to="/">page</Link>
-        </p>
+
+        <div className={ style.buttongroup }>
+          <Link to="/">
+            <button className={style.button} type="button">
+              Home Page
+            </button>
+          </Link>
+
+          <Link to="/nextPage">
+            <button className={style.button} type="button">
+              Next Page
+            </button>
+          </Link>
+
+          <Link to="/">
+            <button className={style.button} type="button">
+              Click Me!
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

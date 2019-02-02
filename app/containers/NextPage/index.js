@@ -14,15 +14,24 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import Map from 'components/Map';
+import { Link } from 'react-router-dom';
+
 import makeSelectNextPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import style from './style.scss';
 
-import { Link } from 'react-router-dom';
+
 
 /* eslint-disable react/prefer-stateless-function */
 export class NextPage extends React.Component {
+
+  onButtonClick = () => {
+    console.log('click');
+  };
+
   render() {
     return (
       <div>
@@ -31,7 +40,32 @@ export class NextPage extends React.Component {
           <meta name="description" content="Description of NextPage" />
         </Helmet>
         <h1>Next page</h1>
-        <p>This is my new page</p> 
+        <p>This is my new page</p>
+        <div>
+        <Link to="/">
+          <button className={style.button} type="button">
+            Home Page
+          </button>
+        </Link>
+
+        <Link to="/help">
+          <button className={style.button} type="button">
+            To HELP
+          </button>
+        </Link>
+
+        <Link to="/">
+          <button className={style.button} type="button">
+            Click Me!
+          </button>
+        </Link>
+        </div>
+        
+        <div className={style.map}>
+          <Map/>
+        </div>
+        
+
       </div>
     );
   }
