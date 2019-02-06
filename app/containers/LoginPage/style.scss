@@ -1,0 +1,13 @@
+.login {
+  margin: 150px auto;
+  background-color: white;
+  max-width: 400px;
+  padding: 20px;
+  form {
+    input {
+      display: block;
+      border: 1px solid red;
+      margin-bottom: 20px;
+    }
+  }
+}

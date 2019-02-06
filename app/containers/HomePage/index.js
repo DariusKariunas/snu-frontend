@@ -10,19 +10,14 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Map from 'components/Map';
 import style from './style.scss';
-
-
-
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
   state = {
     tic: 0,
     tickerFunc: null,
-    text: '',
   };
 
   componentWillMount() {
@@ -47,28 +42,17 @@ export default class HomePage extends React.PureComponent {
     this.setState(prevState => ({ tic: prevState.tic + 1 }));
   };
 
-  onButtonClick = () => {
-    console.log('click');
-  };
-
-  onInputChange = e => {
-    this.setState({ text: e.target.value });
-  };
-
   render() {
     return (
       <div className={style.homePage}>
-
         <div className={style.map}>
-          <button className={style.buttonLogin}> Login </button>
+          <button type="button" className={style.buttonLogin}>
+            Login
+          </button>
           <p className={style.ticker}>{this.state.tic}</p>
-          <Map/>
+          <Map />
         </div>
-
-        
-
-
-    </div>
+      </div>
     );
   }
 }
