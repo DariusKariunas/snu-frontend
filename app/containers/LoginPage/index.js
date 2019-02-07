@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form/immutable';
 import { createStructuredSelector } from 'reselect';
 import { compose, bindActionCreators } from 'redux';
@@ -51,8 +51,8 @@ export class LoginPage extends React.Component {
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className={style.center}>
             <Field
-              type="text"
-              name="userName"
+              type="email"
+              name="email"
               component={Input}
               placeholder="User name..."
             />
@@ -69,7 +69,7 @@ export class LoginPage extends React.Component {
             <button type="submit">Login</button>
           </div>
           <div className={style.center}>
-            <a href="/regist">Not a member?</a>
+            <Link to="/regist">Not a member?</Link>
           </div>
         </form>
       </div>
@@ -97,13 +97,6 @@ const mapStateToProps = createStructuredSelector({
 function validate(valuesMap) {
   const values = valuesMap.toJS();
   const errors = {};
-  if (!values.userName || values.userName.trim() === '') {
-    errors.userName = 'User Name is Required!';
-    console.log(errors.userName);
-  } else if (values.userName.length <= 6) {
-    errors.userName = 'User Name is too short!';
-    console.log(errors.userName);
-  }
   if (!values.password || values.password.trim() === '') {
     errors.password = 'Password is Required!';
     console.log(errors.password);

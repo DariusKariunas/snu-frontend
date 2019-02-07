@@ -1,14 +1,18 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import { auth } from 'utils/firebase';
 import { LOGIN } from 'containers/App/constants';
 import * as C from './constants';
 
 function* login({ payload }) {
-  yield call(delay, 2000);
-  if (payload.password === 'pass123') {
-    yield put({ type: LOGIN });
+  try {
+    const { user } = yield call(
+      auth.doSignInWithEmailAndPassword,
+      payload.email,
+      payload.password,
+    );
+    yield put({ type: LOGIN, payload: user });
     yield put({ type: C.LOGIN_SUCCESS });
-  } else {
+  } catch (e) {
     yield put({ type: C.LOGIN_FAIL });
   }
 }
