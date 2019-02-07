@@ -24,7 +24,7 @@ import style from './style.scss';
 /* eslint-disable react/prefer-stateless-function */
 export class RegisterPage extends React.Component {
   onSubmit = data => {
-    console.log(data);
+    this.props.actions.register(data.toJS());
   };
 
   render() {
@@ -86,6 +86,9 @@ RegisterPage.propTypes = {
   state: PropTypes.shape({
     redirectToReferrer: PropTypes.bool.isRequired,
   }),
+  actions: PropTypes.shape({
+    register: PropTypes.func.isRequired,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -104,7 +107,7 @@ function validate(valuesMap) {
   if (!values.userName || values.userName.trim() === '') {
     errors.userName = 'User Name is Required!';
     console.log(errors.userName);
-  } else if (values.userName.length <= 6) {
+  } else if (values.userName.length <= 3) {
     errors.userName = 'User Name is too short!';
     console.log(errors.userName);
   }

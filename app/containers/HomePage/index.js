@@ -10,49 +10,44 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Map from 'components/Map';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
 import style from './style.scss';
+import makeSelectApp from '../App/selectors';
 
-/* eslint-disable react/prefer-stateless-function */
-export default class HomePage extends React.PureComponent {
-  state = {
-    tic: 0,
-    tickerFunc: null,
-  };
-
+class HomePage extends React.PureComponent {
   componentWillMount() {
-    const tickerFunc = setInterval(this.incrementTic, 1000);
-    this.setState({ tickerFunc });
+    console.log(this.props);
   }
-
-  componentDidMount() {
-    console.log('uzsimoviau');
-  }
-
-  componentDidUpdate() {
-    console.log('atsinaujinau');
-  }
-
-  componentWillUnmount() {
-    console.log('uzsidarau');
-    clearInterval(this.state.tickerFunc);
-  }
-
-  incrementTic = () => {
-    this.setState(prevState => ({ tic: prevState.tic + 1 }));
-  };
 
   render() {
+    const {
+      app: { user },
+    } = this.props;
     return (
       <div className={style.homePage}>
         <div className={style.map}>
           <button type="button" className={style.buttonLogin}>
-            Login
+            {user.email}
           </button>
-          <p className={style.ticker}>{this.state.tic}</p>
           <Map />
         </div>
       </div>
     );
   }
 }
+
+HomePage.propTypes = {
+  app: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  app: makeSelectApp(),
+});
+
+const withConnect = connect(mapStateToProps);
+
+export default compose(withConnect)(HomePage);

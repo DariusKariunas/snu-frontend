@@ -18,13 +18,16 @@ if (!firebase.apps.length) {
 
 const auth = firebase.auth();
 const database = firebase.database();
-const messaging = firebase.messaging();
+//  messaging = firebase.messaging();
 
 // Add the public key generated from the console here.
+/*
 messaging.usePublicVapidKey(
   'BDiBOiv4uO_C0Lo_2isFZOpMrbw2CUmb7vBgy81IjeTFd9vNO8-b31Jin7l2XkuAlBu750MzpcjUAY9v7yHRFpc',
 );
+*/
 
+/*
 messaging
   .requestPermission()
   .then(() => {
@@ -35,9 +38,11 @@ messaging
   .catch(err => {
     console.log('Unable to get permission to notify.', err);
   });
+  */
 
 // Get Instance ID token. Initially this makes a network call, once retrieved
 // subsequent calls to getToken will return from cache.
+/*
 messaging
   .getToken()
   .then(currentToken => {
@@ -54,5 +59,6 @@ messaging
   .catch(err => {
     console.log('An error occurred while retrieving token. ', err);
   });
+  */
 
 export { auth, firebase, database };
