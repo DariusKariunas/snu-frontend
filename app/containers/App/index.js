@@ -13,6 +13,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import LoginPage from 'containers/LoginPage';
 import HelpPage from 'containers/HelpPage';
+import RegisterPage from 'containers/RegisterPage';
+
 import HomePage from 'containers/HomePage/Loadable';
 import NextPage from 'containers/NextPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -39,6 +41,7 @@ function App({ app: { isAuthenticated } }) {
           path="/help"
           component={HelpPage}
         />
+        <Route exact path="/regist" component={RegisterPage} />
         <Route exact path="/nextPage" component={NextPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route component={NotFoundPage} />
