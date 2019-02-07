@@ -11,8 +11,8 @@
     img {
         display: none;
         opacity: 0;
-        height: 0px;
-        width: 0px;
+        height: 1px;
+        width: 1px;
     }   
     
 }
@@ -26,11 +26,9 @@
     background-color: black;
     height: 10em;
     width: 10em;
-    img {
-            
+    img {            
         display: flex;
-        opacity: 1;
-       
+        opacity: 1;       
         height: 5em;
         width: 5em;
     }   

@@ -1,13 +1,35 @@
 .login {
   margin: 150px auto;
+  border-radius: 5px;
+  box-shadow: 5px 10px 18px black;
   background-color: white;
   max-width: 400px;
   padding: 20px;
+  align-content: center;
   form {
-    input {
-      display: block;
-      border: 1px solid red;
-      margin-bottom: 20px;
-    }
+      input {
+        display: inline;
+        border-radius: 5px;
+        border: 1px solid black;
+        box-shadow: 5px 10px 18px silver;
+        margin-bottom: 20px;
+        background: whitesmoke;
+      }
+      input:focus {
+        background-color: white;
+      }
   }
+  button{
+    background: silver;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 5px 10px 18px silver;
+    margin-bottom: 20px;
+    width: 55%;
+  }
+}
+
+.center{
+  justify-content: center;
+  display: flex;
 }

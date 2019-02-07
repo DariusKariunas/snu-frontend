@@ -17,11 +17,26 @@ const DataArray = [
     lat: '54.90081494798153',
     lng: '23.895662339541786',
     text: 'On sale',
+    pic: 'https://c1.staticflickr.com/9/8452/7936998300_6ab78565ff_b.jpg',
   },
   {
     lat: '53.9',
     lng: '24.8',
     text: 'ASaa',
+    pic:
+      'https://cloud.lovindublin.com/images/_relatedEntryImage2x/Latte-Heart-Main.jpg?mtime=20181112151459',
+  },
+  {
+    lat: '54.903',
+    lng: '23.91',
+    text: 'Hot sale',
+    pic: 'https://c1.staticflickr.com/9/8452/7936998300_6ab78565ff_b.jpg',
+  },
+  {
+    lat: '54.8',
+    lng: '23.9',
+    text: 'Home sale',
+    pic: 'https://c1.staticflickr.com/9/8452/7936998300_6ab78565ff_b.jpg',
   },
 ];
 

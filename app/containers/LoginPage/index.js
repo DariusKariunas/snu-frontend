@@ -15,6 +15,7 @@ import { compose, bindActionCreators } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import Input from 'components/Input';
 import makeSelectLoginPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -43,12 +44,29 @@ export class LoginPage extends React.Component {
           <title>LoginPage</title>
           <meta name="description" content="Description of LoginPage" />
         </Helmet>
-        <h1>Login page</h1>
+
+        <h1 className={style.center}>Login page</h1>
         {isLoading && <p>Loading,,,</p>}
         <form onSubmit={handleSubmit(this.onSubmit)}>
-          <Field type="text" name="userName" component="input" />
-          <Field type="password" name="password" component="input" />
-          <button type="submit">Login</button>
+          <div className={style.center}>
+            <Field
+              type="text"
+              name="userName"
+              component={Input}
+              placeholder="User name..."
+            />
+          </div>
+          <div className={style.center}>
+            <Field
+              type="password"
+              name="password"
+              component={Input}
+              placeholder="Password..."
+            />
+          </div>
+          <div className={style.center}>
+            <button type="submit">Login</button>
+          </div>
         </form>
       </div>
     );
@@ -72,6 +90,27 @@ const mapStateToProps = createStructuredSelector({
   state: makeSelectLoginPage(),
 });
 
+function validate(valuesMap) {
+  const values = valuesMap.toJS();
+  const errors = {};
+  if (!values.userName || values.userName.trim() === '') {
+    errors.userName = 'User Name is Required!';
+    console.log(errors.userName);
+  } else if (values.userName.length <= 6) {
+    errors.userName = 'User Name is too short!';
+    console.log(errors.userName);
+  }
+  if (!values.password || values.password.trim() === '') {
+    errors.password = 'Password is Required!';
+    console.log(errors.password);
+  } else if (values.password.length <= 6) {
+    errors.password = 'Password is too short!';
+    console.log(errors.password);
+  }
+
+  return errors;
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(actions, dispatch),
@@ -86,7 +125,7 @@ const withConnect = connect(
 const withReducer = injectReducer({ key: 'loginPage', reducer });
 const withSaga = injectSaga({ key: 'loginPage', saga });
 
-const withForm = reduxForm({ form: 'login' });
+const withForm = reduxForm({ form: 'login', validate });
 
 export default compose(
   withReducer,

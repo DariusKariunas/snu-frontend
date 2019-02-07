@@ -5,7 +5,7 @@ import * as C from './constants';
 
 function* login({ payload }) {
   yield call(delay, 2000);
-  if (payload.password === 'pass') {
+  if (payload.password === 'pass123') {
     yield put({ type: LOGIN });
     yield put({ type: C.LOGIN_SUCCESS });
   } else {
